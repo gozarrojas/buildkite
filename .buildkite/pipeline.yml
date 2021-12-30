@@ -1,6 +1,19 @@
 steps:
 name: "Comandos Windows"
 steps:
-  - commands:
-    - "hostname"
-    - "ipconfig"
+  - command: "hostname"
+    label: "Nombre de mi computador"
+  - command: "ipconfig"
+    label: "Direcciones de red"
+  - command: "python ./hello.py"
+    label: "Executando hello.py"
+  - command: "python ./bye.py"
+    label: "Executando bye.pe"
+    #si bye.py no se ejecuta, intenta 3 veces automaticamente
+    retry:
+      automatic:
+        limit: 3
+      # solo se si es master
+    branches: "master"
+    # ¿te demoraras como maximo 10 minutos?, si no, se cancela
+    timeout_in_minutes: 10

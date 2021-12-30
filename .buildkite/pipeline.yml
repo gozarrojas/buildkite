@@ -50,12 +50,15 @@ steps:
   - command: "buildkite-agent meta-data keys"
   #el comando anterior depende de si info funciona
     depends_on: "info"
+  - wait
   - command: "buildkite-agent meta-data get name"
   #el comando anterior depende de si info funciona
     depends_on: "info"
+  - wait
 
   - command: "python ./build.py"
     label: "Compilando"
+    #Un artefacto es el resultado (archivo) de una ejecución que puede ser usado
     artifact_paths:
       - "build/*"
   - wait
@@ -63,5 +66,5 @@ steps:
     label: "Desplegando"
   # solo se si es master
     branches: "master"
-    # ¿te demoraras como maximo 10 minutos?, si no, se cancela
-    timeout_in_minutes: 10
+    # ¿te demoraras como maximo 5 minutos?, si no, se cancela
+    timeout_in_minutes: 5

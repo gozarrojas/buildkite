@@ -7,7 +7,7 @@ file = "build/build.txt"
 os.mkdir('build')
 #Descargamos el artefacto, porque es diferente para cada compilación
 os.system("dir")
-#os.system("buildkite-agent artifact download build/build.txt build/")
+os.system("buildkite-agent artifact download build/build.txt build/")
 try:
    with open(file,'a') as f:
        f.write("Desplegando !!")

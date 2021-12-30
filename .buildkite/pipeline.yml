@@ -1,3 +1,7 @@
+#Variables globales
+env:
+  "GLOBAL_UNO": "UNO"
+  "GLOBAL_DOS": "DOS"
 steps:
 name: "Comandos Windows"
 steps:
@@ -11,6 +15,7 @@ steps:
   - wait
   - command: "python ./hello.py"
     label: "Executando hello.py"
+    # si ponemos en Message no hello, no se ejecutara hello.py
     if: build.message !~ /no hello/
   # Una intervencion manual
   # los metadatos quedan dentro del servidor, para que pueda
@@ -57,15 +62,19 @@ steps:
   #el comando anterior depende de si info funciona
     depends_on: "info"
   - wait
-
   - command: "python ./build.py"
     label: "Compilando"
+    key: "build"
     #Un artefacto es el resultado (binarios) de una ejecución que puede ser usado
     artifact_paths:
       - "build/*"
-  - wait
   - command: "python ./deploy.py"
     label: "Desplegando"
+    env:
+      "LOCAL_UNO": "UNO"
+      "LOCAL_DOS": "DOS"
+    depends_on:
+      - "build"
   # solo se si es master
     branches: "master"
     # ¿te demoraras como maximo 5 minutos?, si no, se cancela

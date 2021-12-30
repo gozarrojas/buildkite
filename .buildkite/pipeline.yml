@@ -12,8 +12,9 @@ steps:
   - command: "python ./hello.py"
     label: "Executando hello.py"
   # Una intervencion manual
+  # los metadatos quedan dentro del servidor, para que pueda
+  # ser utilizado mas adelante
   - block: "¿Executamos bye.py?"
-  # pidiendo variables para confirmar
     fields:
       - text: "Version"
         key: "release-version"
@@ -31,6 +32,26 @@ steps:
     retry:
       automatic:
         limit: 3
+  - wait
+  - input: "¿Quien eres?"
+    key: "info"
+    fields:
+      - text: "¿Cual es tu nombre?"
+        key: "name"
+      - select: "¿Eres de?"
+        key: "pais"
+        default: "pe"
+        options:
+          - label: "Europa"
+            value: "eu"
+          - label: "Peru"
+            value: "pe"
+    - command: "buildkite-agent meta-data keys"
+    #el comando anterior depende de si info funciona
+      depends_on: "info"
+    - command: "buildkite-agent meta-data get name"
+    #el comando anterior depende de si info funciona
+      depends_on: "info"
       # solo se si es master
     branches: "master"
     # ¿te demoraras como maximo 10 minutos?, si no, se cancela

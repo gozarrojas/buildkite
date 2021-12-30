@@ -8,7 +8,7 @@ steps:
   - command: "python ./hello.py"
     label: "Executando hello.py"
   - command: "python ./bye.py"
-    label: "Executando bye.pe"
+    label: "Executando bye.py"
     #si bye.py no se ejecuta, intenta 3 veces automaticamente
     retry:
       automatic:

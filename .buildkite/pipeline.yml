@@ -11,6 +11,7 @@ steps:
   - wait
   - command: "python ./hello.py"
     label: "Executando hello.py"
+    if: build.message !~ /no hello/
   # Una intervencion manual
   # los metadatos quedan dentro del servidor, para que pueda
   # ser utilizado mas adelante
@@ -32,6 +33,7 @@ steps:
     retry:
       automatic:
         limit: 3
+    if: build.message !~ /no bye/
   - wait
   - input: "¿Quien eres?"
     key: "info"

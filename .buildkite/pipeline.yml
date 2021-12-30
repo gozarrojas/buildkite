@@ -58,7 +58,7 @@ steps:
 
   - command: "python ./build.py"
     label: "Compilando"
-    #Un artefacto es el resultado (archivo) de una ejecución que puede ser usado
+    #Un artefacto es el resultado (binarios) de una ejecución que puede ser usado
     artifact_paths:
       - "build/*"
   - wait

@@ -3,6 +3,9 @@ agents:
   queue: "windows"
 
 steps:
+name: "Python Pipenv Example"
+steps:
   - commands:
+    - "buildkite-agent pipeline upload"
     - "hostname"
     - "ipconfig"

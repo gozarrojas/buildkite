@@ -1,0 +1,9 @@
+#Comentarios
+env:
+  VARIABLE_UNO: "uno"
+  VARIABLE_DOW: "dos"
+#Ejemplo de ejecución de comandos
+steps:
+  - commands:
+    - "hostname"
+    - "ipconfig"

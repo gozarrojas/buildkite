@@ -1,7 +1,5 @@
 steps:
-name: "Python Pipenv Example"
-steps:
-  - commands:
-#    - "buildkite-agent pipeline upload"
-    - "hostname"
-    - "ipconfig"
+  - command: "buildkite-agent pipeline upload"
+    label: ":pipeline:"
+    agents:
+    - "queue=windows"

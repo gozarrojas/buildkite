@@ -46,13 +46,13 @@ steps:
             value: "eu"
           - label: "Peru"
             value: "pe"
-    - command: "buildkite-agent meta-data keys"
-    #el comando anterior depende de si info funciona
-      depends_on: "info"
-    - command: "buildkite-agent meta-data get name"
-    #el comando anterior depende de si info funciona
-      depends_on: "info"
-      # solo se si es master
-    branches: "master"
+  - command: "buildkite-agent meta-data keys"
+  #el comando anterior depende de si info funciona
+    depends_on: "info"
+  - command: "buildkite-agent meta-data get name"
+  #el comando anterior depende de si info funciona
+    depends_on: "info"
+  # solo se si es master
+  branches: "master"
     # ¿te demoraras como maximo 10 minutos?, si no, se cancela
-    timeout_in_minutes: 10
+  timeout_in_minutes: 10

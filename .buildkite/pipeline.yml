@@ -1,0 +1,8 @@
+#Comentarios
+agents:
+  queue: "windows"
+
+steps:
+  - commands:
+    - "hostname"
+    - "ipconfig"

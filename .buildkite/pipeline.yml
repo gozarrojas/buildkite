@@ -46,12 +46,19 @@ steps:
             value: "eu"
           - label: "Peru"
             value: "pe"
+  # retorna todas la metadata creada
   - command: "buildkite-agent meta-data keys"
   #el comando anterior depende de si info funciona
     depends_on: "info"
   - command: "buildkite-agent meta-data get name"
   #el comando anterior depende de si info funciona
     depends_on: "info"
+
+  - command: "python ./build.py"
+    label: "Compilando"
+  - wait
+  - command: "python ./deploy.py"
+    label: "Desplegando"
   # solo se si es master
     branches: "master"
     # ¿te demoraras como maximo 10 minutos?, si no, se cancela

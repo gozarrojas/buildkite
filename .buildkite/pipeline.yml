@@ -5,10 +5,10 @@ steps:
     label: "Nombre de mi computador"
   - command: "ipconfig"
     label: "Direcciones de red"
+# si falla cualquier paso anterior, igual sigue
+    allow_dependency_failure: true
   # esperemos a que acabe de ejecutar ipconfig
   - wait
-  # si falla cualquier paso anterior, igual sigue
-    allow_dependency_failure: true
   - command: "python ./hello.py"
     label: "Executando hello.py"
   # Una intervencion manual

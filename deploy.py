@@ -1,6 +1,8 @@
 import os
 
 file = "build/build.txt"
+os.mkdir('build')
+os.system("buildkite-agent artifact download build/build.txt build/")
 try:
    os.path.isfile(file)
    with open(file,'a') as f:

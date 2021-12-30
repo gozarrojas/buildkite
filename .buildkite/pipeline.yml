@@ -56,6 +56,8 @@ steps:
 
   - command: "python ./build.py"
     label: "Compilando"
+    artifact_paths:
+      - "build/*"
   - wait
   - command: "python ./deploy.py"
     label: "Desplegando"

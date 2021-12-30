@@ -1,6 +1,6 @@
 import os
 
-file = "build/objeto.txt"
+file = "build\objeto.txt"
 
 try:
     os.mkdir('build')

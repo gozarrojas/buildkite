@@ -60,7 +60,7 @@ steps:
     label: "Compilando"
     #Un artefacto es el resultado (binarios) de una ejecución que puede ser usado
     artifact_paths:
-      - "build\*"
+      - "build/*"
   - wait
   - command: "python ./deploy.py"
     label: "Desplegando"

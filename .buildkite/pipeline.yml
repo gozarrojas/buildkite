@@ -5,10 +5,28 @@ steps:
     label: "Nombre de mi computador"
   - command: "ipconfig"
     label: "Direcciones de red"
+  # esperemos a que acabe de ejecutar ipconfig
+  - wait
+  # si falla cualquier paso anterior, igual sigue
+    allow_dependency_failure: true
   - command: "python ./hello.py"
     label: "Executando hello.py"
+  # Una intervencion manual
+  - block: "¿Executamos bye.py?"
+  # pidiendo variables para confirmar
+    fields:
+      - text: "Version"
+        key: "release-version"
+      - select: "Rama"
+        key: "release-rama"
+        default: "dev"
+        options:
+          - label: "Desarrollo"
+            value: "dev"
+          - label: "Estable"
+            value: "Stable"
   - command: "python ./bye.py"
-    label: "Executando bye.pe"
+    label: "Executando bye.py"
     #si bye.py no se ejecuta, intenta 3 veces automaticamente
     retry:
       automatic:
